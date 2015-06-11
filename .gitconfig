@@ -1,0 +1,12 @@
+[user]
+	name = Vitor Cassiano
+	email = vitor.cassiano@olxbr.com
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	df = diff
+	lg = log
+	mr = merge
+[push]
+	default = simple

@@ -42,4 +42,5 @@ function apagabranch() {
 	echo git branch -D $1
 }
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-ctags --language-force=Ruby $(find . -name \*.rb)
+
+# ctags --language-force=Ruby $(find . -name \*.rb)

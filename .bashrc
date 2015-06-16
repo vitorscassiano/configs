@@ -28,8 +28,8 @@ fi)'
 export PS1=$PS1$Color_Off' \$ ';
 
 # git aliases and functions
-alias ll="ls -laG"
-alias ls="ls -G"
+alias ll="ls -la --color=auto"
+alias ls="ls --color=auto"
 alias pega="git fetch origin; git pull --rebase origin \$(parse_git_branch)"
 alias manda="git push origin \$(parse_git_branch)"
 alias desfaztudo="git reset --hard origin/\$(parse_git_branch)"

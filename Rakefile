@@ -8,10 +8,10 @@ def install_java
   sh 'update-java-alternatives -s java-8-oracle'
 end
 
-SCRIPT_DIR = '..scripts'
-TEMPLATE_DIR = '..templates'
+SCRIPT_DIR = 'scripts'
+TEMPLATE_DIR = 'templates'
 
-namespace 'configs' do
+namespace 'config' do
   desc ''
   task :bashrc do
     sh("cp #{TEMPLATE_DIR}/.bashrc ~/")

@@ -1,5 +1,5 @@
 if [ -f ~/bashcolors ]; then
-	. ~/bashcolors
+        . ~/bashcolors
 fi
 
 __git_ps1 ()
@@ -28,19 +28,46 @@ fi)'
 export PS1=$PS1$Color_Off' \$ ';
 
 # git aliases and functions
-alias ll="ls -la --color=auto"
-alias ls="ls --color=auto"
-alias pega="git fetch origin; git pull --rebase origin \$(parse_git_branch)"
-alias manda="git push origin \$(parse_git_branch)"
-alias desfaztudo="git reset --hard origin/\$(parse_git_branch)"
-alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --'
-alias tmux="TERM=xterm-256color tmux"
+#alias ll="ls -la --color=auto"
+#alias ls="ls --color=auto"
+##alias pega="git fetch origin; git pull --rebase origin \$(parse_git_branch)"
+##alias manda="git push origin \$(parse_git_branch)"
+##alias desfaztudo="git reset --hard origin/\$(parse_git_branch)"
+#alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --'
+#alias tmux="TERM=xterm-256color tmux"
 
 function apagabranch() {
-	git push origin :$1
-	git branch -D $1
-	echo git branch -D $1
+        git push origin :$1
+        git branch -D $1
+        echo git branch -D $1
 }
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+## ENV
+LANG=en_US.iso-8859-1
+LC_CTYPE=en_US.iso-8859-1
+LC_NUMERIC="en_US.iso-8859-1"
+LC_TIME="en_US.iso-8859-1"
+LC_COLLATE="en_US.iso-8859-1"
+LC_MONETARY="en_US.iso-8859-1"
+LC_MESSAGES="en_US.iso-8859-1"
+LC_PAPER="en_US.iso-8859-1"
+LC_NAME="en_US.iso-8859-1"
+LC_ADDRESS="en_US.iso-8859-1"
+LC_TELEPHONE="en_US.iso-8859-1"
+LC_MEASUREMENT="en_US.iso-8859-1"
+LC_IDENTIFICATION="en_US.iso-8859-1"
+LC_ALL=
+export LC_CTYPE=en_US.iso-8859-1
+export LANG="$LC_CTYPE"
+
+
 # ctags --language-force=Ruby $(find . -name \*.rb)
+
+#. $HOME/workspace/bomnegocio/lib/bash/lib_bn.sh
+
+#export NVM_DIR="/Users/vitorcassiano/.nvm"
+
+export NVM_DIR="$HOME/.nvm"
+#. "/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

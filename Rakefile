@@ -15,10 +15,12 @@ namespace 'config' do
   desc ''
   task :bashrc do
     sh("cp #{TEMPLATE_DIR}/.bashrc ~/")
+    sh("source #{TEMPLATE_DIR}/.bashrc")
   end
   desc 'Adding common vimrc tricks'
   task :vimrc do
     sh("cp #{TEMPLATE_DIR}/.vimrc ~/")
+    sh("source #{TEMPLATE_DIR}/.vimrc")
   end
   desc 'Adding bash colorful'
   task :bashcolors do
@@ -51,4 +53,4 @@ namespace 'config' do
   end
 end
 
-task :default => [] 
+task :default => []

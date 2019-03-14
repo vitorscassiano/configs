@@ -1,7 +1,6 @@
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
 
 " vim-bootstrap 8624ab1
 
@@ -14,7 +13,7 @@ endif
 
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,go,javascript"
+let g:vim_bootstrap_langs = "c,go,javascript,php"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -76,6 +75,18 @@ endif
 
 Plug 'honza/vim-snippets'
 
+"""""
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" Start autocompletion after 4 chars
+"let g:ycm_min_num_of_chars_for_completion = 4
+"let g:ycm_min_num_identifier_candidate_chars = 4
+"let g:ycm_enable_diagnostic_highlighting = 0
+"" Don't show YCM's preview window [ I find it really annoying ]
+"set completeopt-=preview
+"let g:ycm_add_preview_to_completeopt = 0
+"""""
+
+
 "" Color
 Plug 'tomasr/molokai'
 
@@ -96,6 +107,11 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 " javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
+
+
+" php
+"" PHP Bundle
+Plug 'arnaud-lb/vim-php-namespace'
 
 
 "*****************************************************************************
@@ -169,6 +185,8 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+colorscheme monokai
+set smartindent
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
@@ -550,7 +568,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
 augroup END
 
 

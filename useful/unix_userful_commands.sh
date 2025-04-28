@@ -37,3 +37,9 @@ echo "foobar:12345" | nc -w 1 -u -4 localhost 1234
 #############################################################
 
 nc -ulv 1234
+
+#############################################################
+# Cleanup DNS cache on MacOS
+#############################################################
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+

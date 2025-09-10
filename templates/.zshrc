@@ -18,12 +18,14 @@ export PATH="/Users/vitorcassiano/.rd/bin:$PATH"
 
 # Created by `pipx` on 2025-04-28 23:00:46
 export PATH="$PATH:/Users/vitorcassiano/.local/bin"
+export OPENAI_API_KEY=""
 
 ZSH_THEME="robbyrussell"
 
 plugins=(git aws docker docker-compose gitignore gh golang helm kubectl kubectx nvm)
 
 source $ZSH/oh-my-zsh.sh
+source virtualenvwrapper.sh
 
 
 alias vim="nvim"
@@ -37,10 +39,11 @@ commit() {
         echo "No staged changes to commit."
         return 1
     fi
-    local gd cp
-    gd="$(git diff --staged)"
-    cp="write an English git commit message based on the following changes:\n$gd"
-    git commit -m "$(chatgpt "$cp")"
+
+    local staged message
+    staged="$(git diff --staged)"
+    message="As a software engineer, create a simple semantic commit message for these changes:\n$staged"
+    git commit -m "$(gh copilot suggest -t shell "$message")"
 }
 
 up() {
@@ -54,4 +57,16 @@ up() {
     esac
 }
 
-export OPENAI_API_KEY=""
+## force terminating kubernetes namespace
+fatality() {
+    NAMESPACE="$1"
+    if [ -z "$NAMESPACE" ]; then
+        echo "No namespace provided."
+        exit 1
+    fi
+    kubectl proxy &
+    PID=$!
+    kubectl get namespace "$NAMESPACE" -o json | jq '.spec = {"finalizers":[]}' > temp.json
+    curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json "127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize"
+    kill -9 $PID
+}
